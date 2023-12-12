@@ -1,0 +1,42 @@
+# Provo Social Media and Mental Health Exploration Platform
+
+## Overview
+
+This Node.js website serves as the backbone for Provo's exploration of social media and mental health. The platform facilitates the collection, storage, and analysis of citizens' responses through a secure and efficient system. It also allows an admin to login to view, edit, and delete records. Workers can also log in to only view records. Lastly, the website includes a dashboard allowing users to visualize the data from the database.
+
+## Features
+
+### 1. Node.js Server
+
+The website utilizes Node.js to handle server-side logic, API requests, and interaction with the database. To connect to the server, ensure the following have been run:
+
+```bash
+npm install --save express
+npm install --save knex
+npm install --save pg
+npm install --save ejs
+node index.js
+
+# Relational Database Management
+The program has been linked to PGAdmin. The database ensures data integrity, security, and eliminates redundancy and anomalies.
+
+# Data Communications on AWS
+The platform is deployed on Amazon Web Services (AWS) using Elastic Beanstalk and RDS. It allows secure access over HTTPS, ensuring the confidentiality and integrity of the data.
+
+# Dashboard Connectivity
+The dashboard connects to the database containing citizens' responses. While automatic refresh scheduling isn't implemented due to the absence of a Tableau Server, the dashboard supports manual refresh for up-to-date information.
+
+# Usage
+In order to access the admin page, use the following:
+
+Username: admin
+Password: admin123
+
+Contributors
+Caleb Hanssen
+Kira Coleman
+Elaina Halls
+Kinsee Nyland
+
+License
+This project is licensed under BYU.

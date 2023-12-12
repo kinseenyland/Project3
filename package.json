@@ -1,0 +1,16 @@
+{
+  "name": "project3",
+  "version": "1.0.0",
+  "description": "Apartment complex website in Provo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kinsee Nyland, Kira Coleman, Caleb Hanssen, Elaina Halls",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "knex": "^3.1.0",
+    "pg": "^8.11.3"
+  }
+}

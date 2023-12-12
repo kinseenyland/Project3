@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Search Results</title>
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" /> -->
+
+  <!-- Vendor CSS Files -->
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+
+   <!-- Template Main CSS File -->
+  <link href="/css/main.css" rel="stylesheet">
+
+  </head>
+  <style>
+    /* Add some basic styling for demonstration purposes */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #1b2f45;
+        padding-top: 56px; /* Adjust the value based on your navbar height */
+    }
+    tbody tr:nth-child(even) {
+    background-color: #F9F9F9; /* Lighter background color for even rows */
+    }
+    tbody tr:nth-child(odd) {
+    background-color: #FFFFFF; /* Default background color for odd rows */
+    }
+    td, th {
+    text-align: center;
+    border: 1px solid #ddd; /* Add border to all cells */
+    padding: 8px; /* Add padding for better spacing */
+    }
+    th {
+    font-weight: bold;
+    }
+    /* Style the first row differently to emphasize it's the header row */
+    thead tr {
+    background-color: #FFFFFF; /* Light gray background */
+    }
+  </style>
+<body class="page-index">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="d-flex align-items-center">Provo City</h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+    <style>
+      .center-label {
+          display: block;
+          font-size: medium;
+          color: #FFFFFF;
+      }
+    </style>
+    <br>
+   <form action="/adminRecords" method="GET">
+    <button type="submit" class="goback">Go Back</button>
+    </form> 
+    <br>
+    <label class="center-label"><b>Survey Information:</b></label>  
+   <table>
+     <thead>
+        <!-- CHANGE THESE TO TITLES AND SUCH -->
+       <tr>
+        <th style="text-align: left;">ResponseID</th>
+        <th style="text-align: left;">Origin</th>
+        <th style="text-align: left;">Date</th>
+        <th style="text-align: left;">Time</th>
+        <th style="text-align: left;">Age</th>
+        <th style="text-align: left;">Gender</th>
+        <th style="text-align: left;">RelationshipStatus</th>
+        <th style="text-align: left;">OccupationStatus</th>
+        <th style="text-align: left;">SocialMediaUse</th>
+        <th style="text-align: left;">HoursOnSocialMedia</th>
+        <th style="text-align: left;">SocialMediaWithoutPurpose</th>
+        <th style="text-align: left;">DistractedBySocialMedia</th>
+        <th style="text-align: left;">RestlessWithoutSocialMedia</th>
+        <th style="text-align: left;">EasilyDistractedScale</th>
+        <th style="text-align: left;">BotheredByWorriesScale</th>
+        <th style="text-align: left;">DifficultyConcentrating</th>
+        <th style="text-align: left;">CompareSelfOnSocialMedia</th>
+        <th style="text-align: left;">FeelingsAboutComparisons</th>
+        <th style="text-align: left;">SeekValidationFrequency</th>
+        <th style="text-align: left;">FeelingsOfDepression</th>
+        <th style="text-align: left;">InterestFluctuationScale</th>
+        <th style="text-align: left;">SleepIssuesScale</th>
+        <th style="text-align: left;">MainID</th>
+        <th style="text-align: left;">SocialMediaPlatformID</th>
+        <th style="text-align: left;">SocialMediaPlatform</th>
+        <th style="text-align: left;">OrganizationAffiliationID</th>
+        <th style="text-align: left;">OrganizationAffiliation</th>
+       </tr>
+     </thead>
+     
+     <tbody style="font-family: Arial; font-size: 9pt;">
+      <% for (let iCount = 0; iCount < Dude.length; iCount++) { %>
+        <!-- now we are writing html so we don't need the ejs tag (javascript structure code) guys -->
+        <td><%= Dude[iCount].ResponseID %></td>
+        <td><%= Dude[iCount].Origin %></td>
+        <td><%= Dude[iCount].Date %></td>
+        <td><%= Dude[iCount].Time %></td>
+        <td><%= Dude[iCount].Age %></td>
+        <td><%= Dude[iCount].Gender %></td>
+        <td><%= Dude[iCount].RelationshipStatus %></td>
+        <td><%= Dude[iCount].OccupationStatus %></td>
+        <td><%= Dude[iCount].SocialMediaUse %></td>
+        <td><%= Dude[iCount].HoursOnSocialMedia %></td>
+        <td><%= Dude[iCount].SocialMediaWithoutPurpose %></td>
+        <td><%= Dude[iCount].DistractedBySocialMedia %></td>
+        <td><%= Dude[iCount].RestlessWithoutSocialMedia %></td>
+        <td><%= Dude[iCount].EasilyDistractedScale %></td>
+        <td><%= Dude[iCount].BotheredByWorriesScale %></td>
+        <td><%= Dude[iCount].DifficultyConcentrating %></td>
+        <td><%= Dude[iCount].CompareSelfOnSocialMedia %></td>
+        <td><%= Dude[iCount].FeelingsAboutComparisons %></td>
+        <td><%= Dude[iCount].SeekValidationFrequency %></td>
+        <td><%= Dude[iCount].FeelingsOfDepression %></td>
+        <td><%= Dude[iCount].InterestFluctuationScale %></td>
+        <td><%= Dude[iCount].SleepIssuesScale %></td>
+        <td><%= Dude[iCount].MainID %></td>
+        <td><%= Dude[iCount].SocialMediaPlatformID %></td>
+        <td><%= Dude[iCount].SocialMediaPlatform %></td>
+        <td><%= Dude[iCount].OrganizationAffiliationID %></td>
+        <td><%= Dude[iCount].OrganizationAffiliation %></td>
+
+         </tr>
+      <% } %>
+     </tbody>
+   </table>
+   <br><br>
+
+   <!-- Template Main JS File -->
+  <script src=" /js/main.js"></script>
+</body>
+</html>
