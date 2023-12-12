@@ -130,11 +130,6 @@ app.post("/login", (req, res) => {
     const username = req.body.username
     const password = req.body.password
 
-    if (username === "admin" && password === "admin123") {
-        res.redirect('adminLanding');
-        return;
-    }
-
     knex("user").where("username", username).andWhere("password", password).returning("user_id").then((response) => {
 
         if (response.length == 0) {
@@ -144,16 +139,6 @@ app.post("/login", (req, res) => {
 
         res.redirect("userLanding");
     });
-
-
-
-
-    // else if (knex("user").where("username", username) && knex("user").where("password", password)) {
-    //     res.redirect("userLanding");
-    // }
-    // else {
-    //     res.redirect("login");
-    // }
 });
 
 app.get("/findUsername", (req, res) => {
@@ -305,13 +290,6 @@ app.post("/editRecord/:ResponseID", (req, res) => {
             console.log(err);
             res.status(500).json({ err });
         });
-});
-
-
-// ***********************************************************DASHBOARD PATHS *******************************************************
-// Route to the dashboard page
-app.get("/dashboard", (req,res) => {
-    res.render('dashboard');
 });
 
 // Start the server listening (do it at the bottom)
