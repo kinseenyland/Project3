@@ -14,5 +14,13 @@
     "glightbox": "^3.2.0",
     "knex": "^3.1.0",
     "pg": "^8.11.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kinseenyland/Project3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kinseenyland/Project3/issues"
+  },
+  "homepage": "https://github.com/kinseenyland/Project3#readme"
 }
