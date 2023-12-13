@@ -1,7 +1,7 @@
 
         body {
             font-family: 'Open Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-            background-color: #1b2f45;
+            background-color: #F2C5FF;
             margin: 20px;
             display: flex;
             justify-content: center;
@@ -52,7 +52,7 @@
         }
 
         button {
-            background-color: #00a0e0;
+            background-color: #b32599;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -61,7 +61,7 @@
         }
 
         button:hover {
-            background-color: #0088be;
+            background-color: #ba0e9b;
         }
 
         legend {
