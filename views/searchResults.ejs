@@ -1,151 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Search Results</title>
-   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" /> -->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Apartment Finder</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <link href="/css/main.css" rel="stylesheet">
+        <link href="/css/style2.css" rel="stylesheet" />
+        <link href="/css/specialTouch.css" rel="stylesheet" />
 
-  <!-- Vendor CSS Files -->
-  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/vendor/aos/aos.css" rel="stylesheet">
-  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+    </head>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Apartment Finder</span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="adminlanding">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index">Logout</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Projects Section-->
+            <section class="py-5">
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline"></span><%=Dude.ApartmentName%></h1>
+                    </div>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card 1-->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="p-5">
+                                            <h2 class="fw-bolder">Price: <%=Dude.MonthlyRent%></h2>
+                                            <ul>
 
-   <!-- Template Main CSS File -->
-  <link href="/css/main.css" rel="stylesheet">
+                                                <li>Street Address: <%= Dude.StreetAddress %></li>
+                                                <li>City: <%= Dude.City%></li>
+                                                <li>State: <%= Dude.State%></li>
+                                                <li>Zip: <%= Dude.Zip%></li>
+                                                <li>Bedroom(s): <%= Dude.Bedrooms%></li>
+                                                <li>Room Type: <%= Dude.RoomType%></li>
+                                                <li>Pets: <%= Dude.Pets%></li>
+                                                <li>Rating: <%= Dude.Rating%></li>
+                                            </ul>
 
-  </head>
-  <style>
-    /* Add some basic styling for demonstration purposes */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #1b2f45;
-        padding-top: 56px; /* Adjust the value based on your navbar height */
-    }
-    tbody tr:nth-child(even) {
-    background-color: #F9F9F9; /* Lighter background color for even rows */
-    }
-    tbody tr:nth-child(odd) {
-    background-color: #FFFFFF; /* Default background color for odd rows */
-    }
-    td, th {
-    text-align: center;
-    border: 1px solid #ddd; /* Add border to all cells */
-    padding: 8px; /* Add padding for better spacing */
-    }
-    th {
-    font-weight: bold;
-    }
-    /* Style the first row differently to emphasize it's the header row */
-    thead tr {
-    background-color: #FFFFFF; /* Light gray background */
-    }
-  </style>
-<body class="page-index">
-  <header id="header" class="header d-flex align-items-center fixed-top">
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
-      <a href="/" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="d-flex align-items-center">Provo City</h1>
-      </a>
-
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-    </div>
-  </header><!-- End Header -->
-    <style>
-      .center-label {
-          display: block;
-          font-size: medium;
-          color: #FFFFFF;
-      }
-    </style>
-    <br>
-   <form action="/adminRecords" method="GET">
-    <button type="submit" class="goback">Go Back</button>
-    </form> 
-    <br>
-    <label class="center-label"><b>Survey Information:</b></label>  
-   <table>
-     <thead>
-        <!-- CHANGE THESE TO TITLES AND SUCH -->
-       <tr>
-        <th style="text-align: left;">ResponseID</th>
-        <th style="text-align: left;">Origin</th>
-        <th style="text-align: left;">Date</th>
-        <th style="text-align: left;">Time</th>
-        <th style="text-align: left;">Age</th>
-        <th style="text-align: left;">Gender</th>
-        <th style="text-align: left;">RelationshipStatus</th>
-        <th style="text-align: left;">OccupationStatus</th>
-        <th style="text-align: left;">SocialMediaUse</th>
-        <th style="text-align: left;">HoursOnSocialMedia</th>
-        <th style="text-align: left;">SocialMediaWithoutPurpose</th>
-        <th style="text-align: left;">DistractedBySocialMedia</th>
-        <th style="text-align: left;">RestlessWithoutSocialMedia</th>
-        <th style="text-align: left;">EasilyDistractedScale</th>
-        <th style="text-align: left;">BotheredByWorriesScale</th>
-        <th style="text-align: left;">DifficultyConcentrating</th>
-        <th style="text-align: left;">CompareSelfOnSocialMedia</th>
-        <th style="text-align: left;">FeelingsAboutComparisons</th>
-        <th style="text-align: left;">SeekValidationFrequency</th>
-        <th style="text-align: left;">FeelingsOfDepression</th>
-        <th style="text-align: left;">InterestFluctuationScale</th>
-        <th style="text-align: left;">SleepIssuesScale</th>
-        <th style="text-align: left;">MainID</th>
-        <th style="text-align: left;">SocialMediaPlatformID</th>
-        <th style="text-align: left;">SocialMediaPlatform</th>
-        <th style="text-align: left;">OrganizationAffiliationID</th>
-        <th style="text-align: left;">OrganizationAffiliation</th>
-       </tr>
-     </thead>
-     
-     <tbody style="font-family: Arial; font-size: 9pt;">
-      <% for (let iCount = 0; iCount < Dude.length; iCount++) { %>
-        <!-- now we are writing html so we don't need the ejs tag (javascript structure code) guys -->
-        <td><%= Dude[iCount].ResponseID %></td>
-        <td><%= Dude[iCount].Origin %></td>
-        <td><%= Dude[iCount].Date %></td>
-        <td><%= Dude[iCount].Time %></td>
-        <td><%= Dude[iCount].Age %></td>
-        <td><%= Dude[iCount].Gender %></td>
-        <td><%= Dude[iCount].RelationshipStatus %></td>
-        <td><%= Dude[iCount].OccupationStatus %></td>
-        <td><%= Dude[iCount].SocialMediaUse %></td>
-        <td><%= Dude[iCount].HoursOnSocialMedia %></td>
-        <td><%= Dude[iCount].SocialMediaWithoutPurpose %></td>
-        <td><%= Dude[iCount].DistractedBySocialMedia %></td>
-        <td><%= Dude[iCount].RestlessWithoutSocialMedia %></td>
-        <td><%= Dude[iCount].EasilyDistractedScale %></td>
-        <td><%= Dude[iCount].BotheredByWorriesScale %></td>
-        <td><%= Dude[iCount].DifficultyConcentrating %></td>
-        <td><%= Dude[iCount].CompareSelfOnSocialMedia %></td>
-        <td><%= Dude[iCount].FeelingsAboutComparisons %></td>
-        <td><%= Dude[iCount].SeekValidationFrequency %></td>
-        <td><%= Dude[iCount].FeelingsOfDepression %></td>
-        <td><%= Dude[iCount].InterestFluctuationScale %></td>
-        <td><%= Dude[iCount].SleepIssuesScale %></td>
-        <td><%= Dude[iCount].MainID %></td>
-        <td><%= Dude[iCount].SocialMediaPlatformID %></td>
-        <td><%= Dude[iCount].SocialMediaPlatform %></td>
-        <td><%= Dude[iCount].OrganizationAffiliationID %></td>
-        <td><%= Dude[iCount].OrganizationAffiliation %></td>
-
-         </tr>
-      <% } %>
-     </tbody>
-   </table>
-   <br><br>
-
-   <!-- Template Main JS File -->
-  <script src=" /js/main.js"></script>
-</body>
+                                        </div>
+                                        <img class="img-fluid" src="<%=Dude.Images%>" alt="..." />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Project Card 2-->
+                            <!-- <div class="card overflow-hidden shadow rounded-4 border-0">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="p-5">
+                                            <h2 class="fw-bolder">Project Name 2</h2>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at enim eum illum aperiam placeat esse? Mollitia omnis minima saepe recusandae libero, iste ad asperiores! Explicabo commodi quo itaque! Ipsam!</p>
+                                        </div>
+                                        <img class="img-fluid" src="https://dummyimage.com/300x400/343a40/6c757d" alt="..." />
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Call to action section-->
+            <section class="py-5 bg-gradient-primary-to-secondary text-white">
+                <div class="container px-5 my-5">
+                    <div class="text-center">
+                        <h2 class="display-4 fw-bolder mb-4">Not what you are looking for?</h2>
+                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="adminRecords">Go Back</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <!-- Footer-->
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0">Copyright &copy; slayGroup 2023</div></div>
+                    <!-- <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Contact</a>
+                    </div> -->
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>

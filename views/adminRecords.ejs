@@ -87,7 +87,7 @@
               uniqueApartmentIDs.add(adminInfo[iCount].ApartmentName);
           }
           uniqueApartmentIDs.forEach(ApartmentName => { %>
-              <option value='<%= ApartmentName %>'><%= ApartmentID %></option>
+              <option value='<%= ApartmentName %>'><%= ApartmentName %></option>
           <% }); %>
       </select>
       <button type="submit" class="createbtn">Search</button>
