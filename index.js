@@ -137,7 +137,7 @@ app.post("/login", (req, res) => {
             return;
         }
 
-        res.redirect("userLanding");
+        res.redirect("adminLanding");
     });
 });
 
