@@ -78,8 +78,7 @@ app.get("/adminRecords", (req, res) => {
 app.get("/adminRecords/:ApartmentName", (req, res) => {
 
     const parameterFromPage = req.query.ApartmentName
-    knex
-        .select('*')
+    knex.select('*')
         .from('Apartments')
         .where('Apartments.ApartmentName', parameterFromPage)
         .then(specificGuy => {
