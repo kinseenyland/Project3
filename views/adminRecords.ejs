@@ -129,12 +129,12 @@
         <td><%= adminInfo[iCount].Pets %></td>
         <td><%= adminInfo[iCount].Rating %></td>
            <td style="text-align: center;">
-            <form action="/editRecord/<%= adminInfo[iCount].ResponseID %>" method="GET">
+            <form action="/editRecord/<%= adminInfo[iCount].ApartmentID %>" method="GET">
               <button type="submit">Edit</button>
             </form>
           </td>
            <td style="text-align: center;">
-            <form action="/deleteRecord/<%= adminInfo[iCount].ResponseID %>" method="POST">
+            <form action="/deleteRecord/<%= adminInfo[iCount].ApartmentID %>" method="POST">
               <button type="submit">Delete</button>
             </form>
           </td>

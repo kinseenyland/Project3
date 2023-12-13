@@ -229,14 +229,14 @@ app.post("/editRecord/:ApartmentID", (req, res) => {
         .where("ApartmentID", ApartmentID)
         .update({
             ApartmentName: req.body.name,
-            MonthlyRent: req.body.rent,
-            StreetAddress: req.body.address,
-            City: req.body.city,
-            Zip: parseInt(req.body.zip),
-            Bedrooms: parseInt(req.body.bedrooms),
-            RoomType: req.body.roomType,
-            Pets: req.body.pets,
-            Rating: parseInt(req.body.rating)
+            MonthlyRent: parseInt(req.body.MonthlyRent),
+            StreetAddress: req.body.StreetAddress,
+            City: req.body.City,
+            Zip: parseInt(req.body.Zip),
+            Bedrooms: parseInt(req.body.Bedrooms),
+            RoomType: req.body.RoomType,
+            Pets: req.body.Pets,
+            Rating: parseInt(req.body.Rating)
         })
         .then(updatedUserInfo => {
             // Render the editUser view with the updated user information

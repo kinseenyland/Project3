@@ -63,38 +63,52 @@
     <br><br><br><br><br><br>
 
     <div class="form-container">
-        <form action="/editRecord/<%= ResponseID %>" method="post">
+        <form action="/editRecord/<%= ApartmentID %>" method="post">
             <h2>Edit Record</h2>
-            <input type="hidden" id="ResponseID" name="ResponseID" value="<%=Dude[0].ResponseID %>">
-            <label for="age">Age:</label>
-            <input name="age" type="number" min="1" id="age" title="Type your age." value="<%= Dude[0].Age %>" autofocus
+            <input type="hidden" id="ApartmentID" name="ApartmentID" value="<%=Dude[0].ApartmentID %>">
+            <label for="ApartmentName">ApartmentName:</label><br>
+            <input name="ApartmentName" type="text" id="ApartmentName" title="Type Apartment Name." value="<%= Dude[0].ApartmentName %>" autofocus
                 required>
             <br><br>
-            <label for="gender">Gender:</label>
-            <select name="gender" id="gender" value="<%= Dude[0].Gender %>" defaultValue="Male">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Non-Binary">Non-Binary</option>
-                <option value="Trans">Trans</option>
-                <option value="Other">Other</option>
+            <label for="MonthlyRent">MonthlyRent:</label><br>
+            <input name="MonthlyRent" type="number" min="1" id="MonthlyRent" title="Type Monthly Rent." value="<%= Dude[0].MonthlyRent %>" autofocus
+                required>
+            <br><br>
+            <label for="StreetAddress">StreetAddress:</label><br>
+            <input name="StreetAddress" type="text" id="StreetAddress" title="Type Street Address." value="<%= Dude[0].StreetAddress %>" autofocus
+                required>
+            <br><br>
+            <label for="City">City:</label><br>
+            <input name="City" type="text" id="City" title="Type City." value="<%= Dude[0].City %>" autofocus
+                required>
+            <!-- <br><br>
+            <label for="State">State:</label>
+            <input name="State" type="text" id="State" title="Type State." value="<%= Dude[0].State %>" autofocus
+                required> -->
+            <br><br>
+            <label for="Zip">Zip:</label><br>
+            <input name="Zip" type="number" min="1" id="Zip" title="Type Zip." value="<%= Dude[0].Zip %>" autofocus
+                required>
+                <br><br>
+            <label for="Bedrooms">Number of Bedrooms:</label><br>
+            <input name="Bedrooms" type="number" min="1" id="Bedrooms" title="Type Numer of Bedrooms." value="<%= Dude[0].Bedrooms %>" autofocus
+                required>
+            <br><br>
+            <label for="RoomType">RoomType:</label><br>
+            <select name="RoomType" id="RoomType" value="<%= Dude[0].RoomType %>" defaultValue="Shared">
+                <option value="Shared">Shared</option>
+                <option value="Private">Private</option>
             </select>
             <br><br>
-            <label for="relationshipStatus">Relationship Status:</label>
-            <select name="relationshipStatus" id="relationshipStatus" value="<%= Dude[0].RelationshipStatus %>"
-                defaultValue="relationship">
-                <option value="relationship">In a relationship</option>
-                <option value="single">Single</option>
-                <option value="married">Married</option>
-                <option value="divorced">Divorced</option>
+            <label for="Pets">Pets:</label><br>
+            <select name="Pets" id="Pets" value="<%= Dude[0].Pets %>" defaultValue="N">
+                <option value="Y">Yes</option>
+                <option value="N">No</option>
             </select>
             <br><br>
-            <label for="occupation">Occupation Status:</label>
-            <select name="occupation" id="occupation" value="<%= Dude[0].OccupationStatus %>" defaultValue="retired">
-                <option value="retired">Retired</option>
-                <option value="salaried">Salaried Worker</option>
-                <option value="school">School Student</option>
-                <option value="university">University Student</option>
-            </select>
+            <label for="Rating">Rating:</label><br>
+            <input name="Rating" type="number" min="1" max="5" id="Rating" title="Type Rating." value="<%= Dude[0].Rating %>" autofocus
+                required>
             <br><br>
             <div class="container">
                 <button type="submit" id="btnClick" class="createbtn">Save</button>
