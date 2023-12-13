@@ -57,7 +57,7 @@ app.get("/admin", (req, res) => {
 
 // // random route to Record form page (add a record) TO FIX
 app.get("/", (req, res) => {
-    knex.select().from("user").then(user => {
+    knex.select().from("login").then(user => {
         res.render('index', { users: user });
     })
 });
@@ -69,7 +69,7 @@ app.get("/adminRecords", (req, res) => {
         .from('Apartments')
         .then(chicks => {
             // adminRecords is a html page that it shows the table, the second parameter is the data
-            res.render("adminRecords", { adminInfo: chicks });
+            res.render("kiraTest", { adminInfo: chicks });
         })
 });
 
@@ -108,7 +108,7 @@ app.post("/login", (req, res) => {
     const username = req.body.username
     const password = req.body.password
 
-    knex("user").where("username", username).andWhere("password", password).returning("user_id").then((response) => {
+    knex("login").where("username", username).andWhere("password", password).returning("user_id").then((response) => {
 
         if (response.length == 0) {
             res.redirect("badLogin");
@@ -124,7 +124,7 @@ app.get("/findUsername", (req, res) => {
 });
 
 app.post("/createAccount", (req, res) => {
-    knex("user").insert({ username: req.body.username, password: req.body.password }).then(users => {
+    knex("login").insert({ username: req.body.username, password: req.body.password }).then(users => {
         res.redirect("/login");
     }).catch(err => {
         console.log(err);
@@ -133,13 +133,13 @@ app.post("/createAccount", (req, res) => {
 });
 
 app.post("/findUsername", (req, res) => {
-    knex.select().from("user").where("username", req.body.username).then(user => {
+    knex.select().from("login").where("username", req.body.username).then(user => {
         res.render("modifyAccount", { users: user })
     });
 });
 
 app.post("/modifyAccount", (req, res) => {
-    knex("user").where("user_id", parseInt(req.body.user_id)).update({
+    knex("login").where("user_id", parseInt(req.body.user_id)).update({
         username: req.body.username,
         password: req.body.password
     }).then(users => {
@@ -192,12 +192,17 @@ app.post("/deleteRecord/:ApartmentID", (req, res) => {
         .where({ "ApartmentID": apartmentID })
         .del()
         .then(() => {
-            res.redirect("/adminRecords");
+            knex("Apartments").where({ "ApartmentID": apartmentID }).del().then(() => {
+                res.redirect("/adminRecords");
+            })
         })
-}).catch((error) => {
-    console.error(error);
-    res.status(500).send("Internal Server Error");
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send("Internal Server Error");
+        });
 });
+
+
 
 app.get("/editRecord/:ApartmentID", (req, res) => {
     const ApartmentID = req.params.ApartmentID;
@@ -242,6 +247,25 @@ app.post("/editRecord/:ApartmentID", (req, res) => {
             res.status(500).json({ err });
         });
 });
+
+//route to kira test
+app.get("/kira/:ApartmentID", (req, res) => {
+
+    const parameterFromPage = parseInt(req.query.ApartmentID)
+    knex
+        .select('*')
+        .from('Apartments')
+        .where('Apartments.ApartmentName', parameterFromPage)
+        .then(specificGuy => {
+            res.render("kiraTest", { Dude: specificGuy });
+
+        }).catch(err => {
+            console.log(err);
+            res.status(500).json({ err });
+
+        });
+});
+
 
 // Start the server listening (do it at the bottom)
 app.listen(port, () => console.log("Server is listening"));
