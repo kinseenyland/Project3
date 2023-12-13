@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="/img/provo2.png" rel="icon">
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/vendor/aos/aos.css" rel="stylesheet">
-    <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="/css/main.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link href="/img/provo2.png" rel="icon">
+  <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/vendor/aos/aos.css" rel="stylesheet">
+  <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+  <style>
+    body {
+      background-color: #574780;
+    }
+  </style>
 </head>
 <body class="page-index">
   <!-- ======= Header ======= -->
@@ -31,6 +37,8 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="/">Home</a></li>
+          <li><a href="survey">Survey</a></li>
+          <li><a href="login" class="active">Login</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -45,7 +53,7 @@
       
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" required>
-        <button type="submit">Login</button>
+        <button class="createbtn" type="submit">Login</button>
     </div>
   
     <div class="container">

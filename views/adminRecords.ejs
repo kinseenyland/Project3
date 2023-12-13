@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Admin Records</title>
+   <title>Apartment Records</title>
    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css" /> -->
 
   <!-- Vendor CSS Files -->
@@ -55,7 +55,7 @@
         <a href="/" class="logo d-flex align-items-center">
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h1 class="d-flex align-items-center">Provo City</h1>
+          <h1 class="d-flex align-items-center">Provo Apartments</h1>
         </a>
   
         <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
@@ -63,10 +63,7 @@
   
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a href="adminLanding">Home</a></li>
-            <li><a href="survey">Survey</a></li>
-            <li><a href="dashboard">Dashboard</a></li>
-            <li><a href="adminRecords">Records</a></li>
+            <li><a href="adminLanding">Back to home page</a></li>
             <li><a href="/">Logout</a></li>
           </ul>
         </nav><!-- .navbar -->
@@ -101,33 +98,17 @@
      <thead>
         <!-- CHANGE THESE TO TITLES AND SUCH -->
        <tr>
-        <th style="text-align: left;">ResponseID</th>
-        <th style="text-align: left;">Origin</th>
-        <th style="text-align: left;">Date</th>
-        <th style="text-align: left;">Time</th>
-        <th style="text-align: left;">Age</th>
-        <th style="text-align: left;">Gender</th>
-        <th style="text-align: left;">RelationshipStatus</th>
-        <th style="text-align: left;">OccupationStatus</th>
-        <th style="text-align: left;">SocialMediaUse</th>
-        <th style="text-align: left;">HoursOnSocialMedia</th>
-        <th style="text-align: left;">SocialMediaWithoutPurpose</th>
-        <th style="text-align: left;">DistractedBySocialMedia</th>
-        <th style="text-align: left;">RestlessWithoutSocialMedia</th>
-        <th style="text-align: left;">EasilyDistractedScale</th>
-        <th style="text-align: left;">BotheredByWorriesScale</th>
-        <th style="text-align: left;">DifficultyConcentrating</th>
-        <th style="text-align: left;">CompareSelfOnSocialMedia</th>
-        <th style="text-align: left;">FeelingsAboutComparisons</th>
-        <th style="text-align: left;">SeekValidationFrequency</th>
-        <th style="text-align: left;">FeelingsOfDepression</th>
-        <th style="text-align: left;">InterestFluctuationScale</th>
-        <th style="text-align: left;">SleepIssuesScale</th>
-        <th style="text-align: left;">MainID</th>
-        <th style="text-align: left;">SocialMediaPlatformID</th>
-        <th style="text-align: left;">SocialMediaPlatform</th>
-        <th style="text-align: left;">OrganizationAffiliationID</th>
-        <th style="text-align: left;">OrganizationAffiliation</th>
+        <th style="text-align: left;">ApartmentID</th>
+        <th style="text-align: left;">ApartmentName</th>
+        <th style="text-align: left;">MonthlyRent</th>
+        <th style="text-align: left;">StreetAddress</th>
+        <th style="text-align: left;">City</th>
+        <th style="text-align: left;">State</th>
+        <th style="text-align: left;">Zip</th>
+        <th style="text-align: left;">Bedrooms</th>
+        <th style="text-align: left;">RoomType</th>
+        <th style="text-align: left;">Pets</th>
+        <th style="text-align: left;">Rating</th>
          <th></th>
          <th></th>
        </tr>
@@ -136,33 +117,17 @@
      <tbody style="font-family: Arial; font-size: 9pt;">
       <% for (let iCount = 0; iCount < adminInfo.length; iCount++) { %>
         <!-- now we are writing html so we don't need the ejs tag (javascript structure code) guys -->
-        <td><%= adminInfo[iCount].ResponseID %></td>
-        <td><%= adminInfo[iCount].Origin %></td>
-        <td><%= adminInfo[iCount].Date %></td>
-        <td><%= adminInfo[iCount].Time %></td>
-        <td><%= adminInfo[iCount].Age %></td>
-        <td><%= adminInfo[iCount].Gender %></td>
-        <td><%= adminInfo[iCount].RelationshipStatus %></td>
-        <td><%= adminInfo[iCount].OccupationStatus %></td>
-        <td><%= adminInfo[iCount].SocialMediaUse %></td>
-        <td><%= adminInfo[iCount].HoursOnSocialMedia %></td>
-        <td><%= adminInfo[iCount].SocialMediaWithoutPurpose %></td>
-        <td><%= adminInfo[iCount].DistractedBySocialMedia %></td>
-        <td><%= adminInfo[iCount].RestlessWithoutSocialMedia %></td>
-        <td><%= adminInfo[iCount].EasilyDistractedScale %></td>
-        <td><%= adminInfo[iCount].BotheredByWorriesScale %></td>
-        <td><%= adminInfo[iCount].DifficultyConcentrating %></td>
-        <td><%= adminInfo[iCount].CompareSelfOnSocialMedia %></td>
-        <td><%= adminInfo[iCount].FeelingsAboutComparisons %></td>
-        <td><%= adminInfo[iCount].SeekValidationFrequency %></td>
-        <td><%= adminInfo[iCount].FeelingsOfDepression %></td>
-        <td><%= adminInfo[iCount].InterestFluctuationScale %></td>
-        <td><%= adminInfo[iCount].SleepIssuesScale %></td>
-        <td><%= adminInfo[iCount].MainID %></td>
-        <td><%= adminInfo[iCount].SocialMediaPlatformID %></td>
-        <td><%= adminInfo[iCount].SocialMediaPlatform %></td>
-        <td><%= adminInfo[iCount].OrganizationAffiliationID %></td>
-        <td><%= adminInfo[iCount].OrganizationAffiliation %></td>
+        <td><%= adminInfo[iCount].ApartmentID %></td>
+        <td><%= adminInfo[iCount].ApartmentName %></td>
+        <td><%= adminInfo[iCount].MonthlyRent %></td>
+        <td><%= adminInfo[iCount].StreetAddress %></td>
+        <td><%= adminInfo[iCount].City %></td>
+        <td><%= adminInfo[iCount].State %></td>
+        <td><%= adminInfo[iCount].Zip %></td>
+        <td><%= adminInfo[iCount].Bedrooms %></td>
+        <td><%= adminInfo[iCount].RoomType %></td>
+        <td><%= adminInfo[iCount].Pets %></td>
+        <td><%= adminInfo[iCount].Rating %></td>
            <td style="text-align: center;">
             <form action="/editRecord/<%= adminInfo[iCount].ResponseID %>" method="GET">
               <button type="submit">Edit</button>
