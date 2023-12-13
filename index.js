@@ -66,10 +66,7 @@ app.get("/", (req, res) => {
 //DATA and route FROM PG TO THE ADMIN RECORD PAGE 
 app.get("/adminRecords", (req, res) => {
     knex.select('*')
-        .from('Respondent')
-        .innerJoin('Main', 'Main.ResponseID', '=', 'Respondent.ResponseID')
-        .innerJoin('SocialMedia', 'SocialMedia.SocialMediaPlatformID', '=', 'Main.SocialMediaPlatformID')
-        .innerJoin('Organization', 'Organization.OrganizationAffiliationID', '=', 'Main.OrganizationAffiliationID')
+        .from('Apartments')
         .then(chicks => {
             // adminRecords is a html page that it shows the table, the second parameter is the data
             res.render("adminRecords", { adminInfo: chicks });
@@ -77,19 +74,14 @@ app.get("/adminRecords", (req, res) => {
 });
 
 
-
-
 //Search record on the admin records page
-app.get("/adminRecords/:ResponseID", (req, res) => {
+app.get("/adminRecords/:ApartmentID", (req, res) => {
 
-    const parameterFromPage = parseInt(req.query.ResponseID)
+    const parameterFromPage = parseInt(req.query.ApartmentID)
     knex
         .select('*')
-        .from('Respondent')
-        .innerJoin('Main', 'Main.ResponseID', '=', 'Respondent.ResponseID')
-        .innerJoin('SocialMedia', 'SocialMedia.SocialMediaPlatformID', '=', 'Main.SocialMediaPlatformID')
-        .innerJoin('Organization', 'Organization.OrganizationAffiliationID', '=', 'Main.OrganizationAffiliationID')
-        .where('Respondent.ResponseID', parameterFromPage)
+        .from('Apartments')
+        .where('Apartments.ApartmentName', parameterFromPage)
         .then(specificGuy => {
             res.render("searchResults", { Dude: specificGuy });
 
@@ -98,20 +90,6 @@ app.get("/adminRecords/:ResponseID", (req, res) => {
             res.status(500).json({ err });
 
         });
-});
-
-// ***********************************************USER RELATED PATHS******************************************
-
-app.get("/userRecords", (req, res) => {
-    knex.select('*')
-        .from('Respondent')
-        .innerJoin('Main', 'Main.ResponseID', '=', 'Respondent.ResponseID')
-        .innerJoin('SocialMedia', 'SocialMedia.SocialMediaPlatformID', '=', 'Main.SocialMediaPlatformID')
-        .innerJoin('Organization', 'Organization.OrganizationAffiliationID', '=', 'Main.OrganizationAffiliationID')
-        .then(chicks => {
-            // adminRecords is a html page that it shows the table, the second parameter is the data
-            res.render("userRecords", { userInfo: chicks });
-        })
 });
 
 // ***********************************************LOGIN RELATED PATHS****************************************
@@ -173,10 +151,6 @@ app.get("/adminLanding", (req, res) => {
     res.render("adminLanding", {});
 });
 
-app.get("/userLanding", (req, res) => {
-    res.render("userLanding", {});
-});
-
 // **************************************SURVEY RELATED PATHS****************************************
 
 app.get("/survey", (req, res) => {
@@ -184,108 +158,85 @@ app.get("/survey", (req, res) => {
 });
 
 app.post("/survey", (req, res) => {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const timeWithoutTimezone = `${hours}:${minutes}:${seconds}`;
     // Insert data into the Respondent table
-    knex("Respondent")
+    knex("Apartments")
         .insert(
             {
-                Origin: 'Provo',
-                Date: new Date().toISOString(),
-                Time: timeWithoutTimezone,
-                Age: req.body.age,
-                Gender: req.body.gender,
-                RelationshipStatus: req.body.relationshipStatus,
-                OccupationStatus: req.body.occupation,
-                SocialMediaUse: req.body.mediaUsage,
-                HoursOnSocialMedia: req.body.time,
-                SocialMediaWithoutPurpose: parseInt(req.body.noPurpose),
-                DistractedBySocialMedia: parseInt(req.body.distracted),
-                RestlessWithoutSocialMedia: parseInt(req.body.restless),
-                EasilyDistractedScale: parseInt(req.body.youDistracted),
-                BotheredByWorriesScale: parseInt(req.body.worries),
-                DifficultyConcentrating: parseInt(req.body.concentrate),
-                CompareSelfOnSocialMedia: parseInt(req.body.compare),
-                FeelingsAboutComparisons: parseInt(req.body.compare),
-                SeekValidationFrequency: parseInt(req.body.validation),
-                FeelingsOfDepression: parseInt(req.body.depressed),
-                InterestFluctuationScale: parseInt(req.body.interest),
-                SleepIssuesScale: parseInt(req.body.sleep)
-            }).returning("ResponseID")
-        .then((response) => {
-            // Redirect to same page after the survey has been inserted
-            const ResponseID = response[0].ResponseID
-
-            req.body.platform.forEach(platform => {
-                knex("Main")
-                    .insert({
-                        ResponseID: ResponseID,
-                        SocialMediaPlatformID: platform,
-                        OrganizationAffiliationID: req.body.organization
-                    }).then(() => {
-                        res.redirect("/thanks");
-                    })
+                ApartmentName: req.body.name,
+                MonthlyRent: req.body.rent,
+                StreetAddress: req.body.address,
+                City: req.body.city,
+                Zip: parseInt(req.body.zip),
+                State: 'UT',
+                Bedrooms: parseInt(req.body.bedrooms),
+                RoomType: req.body.roomType,
+                Pets: req.body.pets,
+                Rating: parseInt(req.body.rating)
+            }).then((response) => {
+                res.redirect("/thanks");
             })
-
-        })
-
 })
 
 // Route to the thank you page
-app.get("/thanks", (req,res) => {
+app.get("/thanks", (req, res) => {
     res.render('thankyouSurvey');
 });
 
 // **********************************************CRUD***********************************************
 // Add a new route for deletion
-app.post("/deleteRecord/:ResponseId", (req, res) => {
-    const responseId = req.params.ResponseId;
+app.post("/deleteRecord/:ApartmentID", (req, res) => {
+    const apartmentID = req.params.ApartmentID;
 
-    // Perform deletion based on ResponseID
-    knex("Main")
-        .where({ "ResponseID": responseId })
+    // Perform deletion based on ApartmentID
+    knex("Apartments")
+        .where({ "ApartmentID": apartmentID })
         .del()
         .then(() => {
-            // You may want to add additional logic to delete related records in other tables
-            // ...
-            knex("Respondent").where({ "ResponseID": responseId }).del().then(() => {
-                res.redirect("/adminRecords");
-            })
+            res.redirect("/adminRecords");
         })
-        .catch((error) => {
-            console.error(error);
-            res.status(500).send("Internal Server Error");
-        });
+}).catch((error) => {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
 });
 
-app.get("/editRecord/:ResponseID", (req, res) => {
-    const ResponseID = req.params.ResponseID;
+app.get("/editRecord/:ApartmentID", (req, res) => {
+    const ApartmentID = req.params.ApartmentID;
     knex.select(
-        "Age", "Gender", "RelationshipStatus", "OccupationStatus")
-        .from("Respondent").where("ResponseID", ResponseID).then(Dude => {
-            res.render("editRecord", { Dude: Dude, ResponseID: ResponseID })
+        "ApartmentName",
+        "MonthlyRent",
+        "StreetAddress",
+        "City",
+        "Zip",
+        "Bedrooms",
+        "RoomType",
+        "Pets",
+        "Rating")
+        .from("Apartments").where("ApartmentID", ApartmentID).then(Dude => {
+            res.render("editRecord", { Dude: Dude, ApartmentID: ApartmentID })
         }).catch(err => {
             console.log(err);
             res.status(500).json({ err });
         })
 });
-app.post("/editRecord/:ResponseID", (req, res) => {
-    const ResponseID = req.params.ResponseID;
+app.post("/editRecord/:ApartmentID", (req, res) => {
+    const ApartmentID = req.params.ApartmentID;
     // Update the user information
-    knex("Respondent")
-        .where("ResponseID", ResponseID)
+    knex("Apartments")
+        .where("ApartmentID", ApartmentID)
         .update({
-            Age: parseInt(req.body.age),
-            Gender: req.body.gender,
-            RelationshipStatus: req.body.relationshipStatus,
-            OccupationStatus: req.body.occupation
+            ApartmentName: req.body.name,
+            MonthlyRent: req.body.rent,
+            StreetAddress: req.body.address,
+            City: req.body.city,
+            Zip: parseInt(req.body.zip),
+            Bedrooms: parseInt(req.body.bedrooms),
+            RoomType: req.body.roomType,
+            Pets: req.body.pets,
+            Rating: parseInt(req.body.rating)
         })
         .then(updatedUserInfo => {
             // Render the editUser view with the updated user information
-            res.render("index", { ResponseID: ResponseID });
+            res.render("index", { ApartmentID: ApartmentID });
         }).catch(err => {
             console.log(err);
             res.status(500).json({ err });
@@ -293,4 +244,4 @@ app.post("/editRecord/:ResponseID", (req, res) => {
 });
 
 // Start the server listening (do it at the bottom)
-app.listen( port, () => console.log("Server is listening"));
+app.listen(port, () => console.log("Server is listening"));
