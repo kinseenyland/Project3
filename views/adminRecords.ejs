@@ -23,7 +23,7 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #1b2f45;
+        background-color: #574780;
     }
     body {
         padding-top: 56px; /* Adjust the value based on your navbar height */
@@ -63,7 +63,7 @@
   
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a href="adminLanding">Back to home page</a></li>
+            <li><a href="adminLanding">Back</a></li>
             <li><a href="/">Logout</a></li>
           </ul>
         </nav><!-- .navbar -->
@@ -71,7 +71,7 @@
       </div>
     </header><!-- End Header -->
    <br><br>
-   <form action="/adminRecords/:ResponseID" method="GET">
+   <form action="/adminRecords/:ApartmentName" method="GET">
       <style>
         .center-label {
             display: block;
@@ -79,15 +79,15 @@
             color: #FFFFFF;
         }
     </style>
-      <label for="ResponseID" class="center-label">Search:</label>
-      <select name="ResponseID">
+      <label for="ApartmentName" class="center-label">Search:</label>
+      <select name="ApartmentName">
           <% 
-          const uniqueResponseIDs = new Set();
+          const uniqueApartmentIDs = new Set();
           for (let iCount = 0; iCount < adminInfo.length; iCount++) {
-              uniqueResponseIDs.add(adminInfo[iCount].ResponseID);
+              uniqueApartmentIDs.add(adminInfo[iCount].ApartmentName);
           }
-          uniqueResponseIDs.forEach(responseID => { %>
-              <option value='<%= responseID %>'><%= responseID %></option>
+          uniqueApartmentIDs.forEach(ApartmentName => { %>
+              <option value='<%= ApartmentName %>'><%= ApartmentID %></option>
           <% }); %>
       </select>
       <button type="submit" class="createbtn">Search</button>
@@ -109,8 +109,8 @@
         <th style="text-align: left;">RoomType</th>
         <th style="text-align: left;">Pets</th>
         <th style="text-align: left;">Rating</th>
-         <th></th>
-         <th></th>
+         <th>Edit?</th>
+         <th>Delete?</th>
        </tr>
      </thead>
      
