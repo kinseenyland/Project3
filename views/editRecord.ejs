@@ -65,50 +65,44 @@
     <div class="form-container">
         <form action="/editRecord/<%= ApartmentID %>" method="post">
             <h2>Edit Record</h2>
-            <input type="hidden" id="ApartmentID" name="ApartmentID" value="<%=Dude[0].ApartmentID %>">
-            <label for="ApartmentName">ApartmentName:</label><br>
-            <input name="ApartmentName" type="text" id="ApartmentName" title="Type Apartment Name." value="<%= Dude[0].ApartmentName %>" autofocus
+            <!-- <input type="hidden" id="ApartmentID" name="ApartmentID" value="<%=Dude[0].ApartmentID %>"> -->
+            <label for="name">ApartmentName:</label><br>
+            <input name="name" type="text" id="name" title="Type Apartment Name." value="<%= Dude[0].ApartmentName %>" autofocus
                 required>
             <br><br>
-            <label for="MonthlyRent">MonthlyRent:</label><br>
-            <input name="MonthlyRent" type="number" min="1" id="MonthlyRent" title="Type Monthly Rent." value="<%= Dude[0].MonthlyRent %>" autofocus
-                required>
+            <label for="rent">Monthly Rent:</label><br>
+            <input name="rent" type="number" min="1" id="rent" title="Type Monthly Rent." value="<%= Dude[0].MonthlyRent %>" >
             <br><br>
-            <label for="StreetAddress">StreetAddress:</label><br>
-            <input name="StreetAddress" type="text" id="StreetAddress" title="Type Street Address." value="<%= Dude[0].StreetAddress %>" autofocus
-                required>
+            <label for="address">Street Address:</label><br>
+            <input name="address" type="text" id="address" title="Type Street Address." value="<%= Dude[0].StreetAddress %>" >
             <br><br>
-            <label for="City">City:</label><br>
-            <input name="City" type="text" id="City" title="Type City." value="<%= Dude[0].City %>" autofocus
-                required>
+            <label for="city">City:</label><br>
+            <input name="city" type="text" id="city" title="Type City." value="<%= Dude[0].City %>">
             <!-- <br><br>
             <label for="State">State:</label>
             <input name="State" type="text" id="State" title="Type State." value="<%= Dude[0].State %>" autofocus
                 required> -->
             <br><br>
-            <label for="Zip">Zip:</label><br>
-            <input name="Zip" type="number" min="1" id="Zip" title="Type Zip." value="<%= Dude[0].Zip %>" autofocus
-                required>
+            <label for="zip">Zip:</label><br>
+            <input name="zip" type="number" min="1" id="zip" title="Type Zip." value="<%= Dude[0].Zip %>">
                 <br><br>
-            <label for="Bedrooms">Number of Bedrooms:</label><br>
-            <input name="Bedrooms" type="number" min="1" id="Bedrooms" title="Type Numer of Bedrooms." value="<%= Dude[0].Bedrooms %>" autofocus
-                required>
+            <label for="bedrooms">Number of Bedrooms:</label><br>
+            <input name="bedrooms" type="number" min="1" id="bedrooms" title="Type Number of Bedrooms." value="<%= Dude[0].Bedrooms %>">
             <br><br>
-            <label for="RoomType">RoomType:</label><br>
-            <select name="RoomType" id="RoomType" value="<%= Dude[0].RoomType %>" defaultValue="Shared">
+            <label for="roomType">RoomType:</label><br>
+            <select name="roomType" id="roomType" value="<%= Dude[0].RoomType %>" defaultValue="Shared">
                 <option value="Shared">Shared</option>
                 <option value="Private">Private</option>
             </select>
             <br><br>
-            <label for="Pets">Pets:</label><br>
-            <select name="Pets" id="Pets" value="<%= Dude[0].Pets %>" defaultValue="N">
+            <label for="pets">Pets:</label><br>
+            <select name="pets" id="pets" value="<%= Dude[0].Pets %>" defaultValue="N">
                 <option value="Y">Yes</option>
                 <option value="N">No</option>
             </select>
             <br><br>
-            <label for="Rating">Rating:</label><br>
-            <input name="Rating" type="number" min="1" max="5" id="Rating" title="Type Rating." value="<%= Dude[0].Rating %>" autofocus
-                required>
+            <label for="rating">Rating:</label><br>
+            <input name="rating" type="number" min="1" max="5" id="rating" title="Type Rating." value="<%= Dude[0].Rating %>">
             <br><br>
             <div class="container">
                 <button type="submit" id="btnClick" class="createbtn">Save</button>
