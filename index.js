@@ -239,7 +239,7 @@ app.post("/editRecord/:ApartmentID", (req, res) => {
             Rating: parseInt(req.body.rating)
         })
         .then(() => {
-            // Render the editUser view with the updated user information
+            // Redirects to the admin landing page
             res.redirect("/adminLanding");
         }).catch(err => {
             console.log(err);
