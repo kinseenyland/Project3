@@ -69,17 +69,16 @@ app.get("/adminRecords", (req, res) => {
         .from('Apartments')
         .then(chicks => {
             // adminRecords is a html page that it shows the table, the second parameter is the data
-            res.render("kiraTest", { adminInfo: chicks });
+            res.render("adminRecords", { adminInfo: chicks });
         })
 });
 
 
 //Search record on the admin records page
-app.get("/adminRecords/:ApartmentID", (req, res) => {
+app.get("/adminRecords/:ApartmentName", (req, res) => {
 
-    const parameterFromPage = parseInt(req.query.ApartmentID)
-    knex
-        .select('*')
+    const parameterFromPage = req.query.ApartmentName
+    knex.select('*')
         .from('Apartments')
         .where('Apartments.ApartmentName', parameterFromPage)
         .then(specificGuy => {
@@ -163,7 +162,7 @@ app.post("/survey", (req, res) => {
         .insert(
             {
                 ApartmentName: req.body.name,
-                MonthlyRent: req.body.rent,
+                MonthlyRent: parseInt(req.body.rent),
                 StreetAddress: req.body.address,
                 City: req.body.city,
                 Zip: parseInt(req.body.zip),
@@ -230,7 +229,7 @@ app.post("/editRecord/:ApartmentID", (req, res) => {
         .where("ApartmentID", ApartmentID)
         .update({
             ApartmentName: req.body.name,
-            MonthlyRent: req.body.rent,
+            MonthlyRent: parseInt(req.body.rent),
             StreetAddress: req.body.address,
             City: req.body.city,
             Zip: parseInt(req.body.zip),
@@ -239,32 +238,16 @@ app.post("/editRecord/:ApartmentID", (req, res) => {
             Pets: req.body.pets,
             Rating: parseInt(req.body.rating)
         })
-        .then(updatedUserInfo => {
-            // Render the editUser view with the updated user information
-            res.render("index", { ApartmentID: ApartmentID });
+        .then(() => {
+            // Redirects to the admin landing page
+            res.redirect("/adminLanding");
         }).catch(err => {
             console.log(err);
             res.status(500).json({ err });
         });
 });
 
-//route to kira test
-app.get("/kira/:ApartmentID", (req, res) => {
 
-    const parameterFromPage = parseInt(req.query.ApartmentID)
-    knex
-        .select('*')
-        .from('Apartments')
-        .where('Apartments.ApartmentName', parameterFromPage)
-        .then(specificGuy => {
-            res.render("kiraTest", { Dude: specificGuy });
-
-        }).catch(err => {
-            console.log(err);
-            res.status(500).json({ err });
-
-        });
-});
 
 
 // Start the server listening (do it at the bottom)
