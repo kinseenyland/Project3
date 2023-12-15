@@ -1,3 +1,9 @@
+// Group 1-9 Section 1
+// Elaina Halls, Kira Coleman, Kinsee Nyland, Caleb Hanssen 
+// This program allows users to create an account, login, view apartments in Provo/Orem, and add apartments. 
+// The program is connected to a database that stores all of the apartments. When an apartment is selected, 
+// it displays the details of associated with the apartment and the corresponding image.
+
 let express = require("express");
 
 let app = express();
@@ -170,7 +176,8 @@ app.post("/survey", (req, res) => {
                 Bedrooms: parseInt(req.body.bedrooms),
                 RoomType: req.body.roomType,
                 Pets: req.body.pets,
-                Rating: parseInt(req.body.rating)
+                Rating: parseInt(req.body.rating),
+                Images: 'defaultAddNew.jpg'
             }).then((response) => {
                 res.redirect("/thanks");
             })
