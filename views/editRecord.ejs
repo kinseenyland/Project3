@@ -1,77 +1,47 @@
-<!--This page allows the user to create a new account.-->
+<!--This page allows the user to submit a form and add a new apartment to the database.-->
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Records</title>
-
-    <!-- Vendor CSS Files -->
+    <title>Form</title>
+    <link href="img/provo2.png" rel="icon">
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="/vendor/aos/aos.css" rel="stylesheet">
     <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/form.css" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
     <link href="/css/main.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #1b2f45;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: white; /* White backdrop */
-        }
-
-        form {
-            width: 300px; /* Adjust the width as needed */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Add your additional styles here */
-    </style>
+    <link href="/css/form.css" rel="stylesheet">
 
 </head>
-
-<body class="page-index" style="background-color: #574780;">
+<body class="page-index">
     <!-- ======= Header ======= -->
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-    
-          <a href="/" class="logo d-flex align-items-center">
-            <!-- Uncomment the line below if you also wish to use an image logo -->
-            <!-- <img src="assets/img/logo.png" alt=""> -->
-            <h1 class="d-flex align-items-center">Provo Apartments</h1>
-          </a>
-    
-          <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-          <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-    
-          <nav id="navbar" class="navbar">
-            <ul>
-              <li><a href="/adminRecords">Back</a></li>
-              <li><a href="/">Logout</a></li>
-            </ul>
-          </nav><!-- .navbar -->
-    
-        </div>
-      </header><!-- End Header -->
-    <br><br><br><br><br><br>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
+      <a href="/" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 class="d-flex align-items-center">Apartments</h1>
+      </a>
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/adminLanding">Home</a></li>
+          <li><a href="/adminRecords" class="active">View Apartments</a></li>
+          <li><a href="/survey" class="active">Add an Apartment</a></li>
+          <li><a href="/">Logout</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+    <br><br><br><br><br><br><br><br><br><br><br><br>
     <div class="container">
         <form action="/editRecord/<%= ApartmentID %>" method="post">
             <h2>Edit Record</h2>
@@ -115,13 +85,17 @@
             <label for="rating">Rating:</label><br>
             <input name="rating" type="number" min="1" max="5" id="rating" title="Type Rating." value="<%= Dude[0].Rating %>">
             <br><br>
-            <button type="submit" id="btnClick" class="createbtn">Save</button>
-    </fieldset>
-    </form>
+            <button type="submit" id="btnClick">Save</button> 
     </div>
     <script src="/js/main.js">
+       
 
     </script>
 </body>
-
 </html>
+
+
+
+
+
+
