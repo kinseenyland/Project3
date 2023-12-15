@@ -14,6 +14,8 @@
     <link href="/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/form.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="/css/main.css" rel="stylesheet">
@@ -70,11 +72,12 @@
       </header><!-- End Header -->
     <br><br><br><br><br><br>
 
-    <div class="form-container">
+    <div class="container">
         <form action="/editRecord/<%= ApartmentID %>" method="post">
             <h2>Edit Record</h2>
+            <fieldset>
             <!-- <input type="hidden" id="ApartmentID" name="ApartmentID" value="<%=Dude[0].ApartmentID %>"> -->
-            <label for="name">ApartmentName:</label><br>
+            <label for="name">Apartment Name:</label><br>
             <input name="name" type="text" id="name" title="Type Apartment Name." value="<%= Dude[0].ApartmentName %>" autofocus
                 required>
             <br><br>
@@ -97,7 +100,7 @@
             <label for="bedrooms">Number of Bedrooms:</label><br>
             <input name="bedrooms" type="number" min="1" id="bedrooms" title="Type Number of Bedrooms." value="<%= Dude[0].Bedrooms %>">
             <br><br>
-            <label for="roomType">RoomType:</label><br>
+            <label for="roomType">Room Type:</label><br>
             <select name="roomType" id="roomType" value="<%= Dude[0].RoomType %>" defaultValue="Shared">
                 <option value="Shared">Shared</option>
                 <option value="Private">Private</option>
@@ -112,11 +115,10 @@
             <label for="rating">Rating:</label><br>
             <input name="rating" type="number" min="1" max="5" id="rating" title="Type Rating." value="<%= Dude[0].Rating %>">
             <br><br>
-            <div class="container">
-                <button type="submit" id="btnClick" class="createbtn">Save</button>
-            </div>
-    </div>
+            <button type="submit" id="btnClick" class="createbtn">Save</button>
+    </fieldset>
     </form>
+    </div>
     <script src="/js/main.js">
 
     </script>
